@@ -1,0 +1,891 @@
+.coverBg {
+    width: 100%;
+    height: 100%;
+    background: $coverBg;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    &.display {
+        display: flex;
+    }
+
+    .jumpWindow {
+        width: 100%;
+        height: auto;
+        background: $jpWBG;
+        border: solid 1px $jpW_OuterBorder;
+        border-radius: 10px;
+        display: none;
+
+        &.display {
+            display: block;
+        }
+
+        .titleArea {
+            width: 100%;
+            height: 50px;
+            background: $jpW_TitleBG;
+            border-radius: 8px 8px 0 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+
+            .title {
+                color: $jpW_Title;
+                font-size: 20px;
+                font-weight: bold;
+            }
+
+            .closeBtn {
+                width: 20px;
+                height: 20px;
+                position: absolute;
+                right: 22px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+
+                &::before,
+                &::after {
+                    content: "";
+                    position: absolute;
+                    width: 2px;
+                    height: 100%;
+                    background: $jpW_Title;
+                }
+
+                &::before {
+                    transform: rotate(45deg);
+                }
+                &::after {
+                    transform: rotate(-45deg);
+                }
+            }
+        }
+
+        //--最新消息--
+        &.news {
+            width: 840px;
+            height: auto;
+
+            .tabs {
+                width: 100%;
+                height: auto;
+                display: flex;
+                padding: 29px 25px 0;
+    
+                li {
+                    width: auto;
+                    height: auto;
+                    @include pageBtn;
+                    margin-right: 3px;
+                }
+            }
+
+            //消息內容
+            .tabsContent {
+                width: 100%;
+                height: 100%;
+                padding: 0 25px 29px;
+                display: none;
+    
+                &.display {
+                    display: block;
+                }
+                    
+                ul {
+                    width: 100%;
+                    height: auto;
+
+                    li {
+                        width: 100%;
+                        height: 50px;
+                        border-bottom: 1px solid $main-Border_1;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        padding: 0 6px;
+    
+                        &:first-child {
+                            border-top: solid 1px $main-Border_1;
+                        }
+
+                        p {
+                            width: 80%;
+                            color: $main-font;
+                            font-size: 16px;
+                            font-weight: bold;
+                            @include textHidden;
+
+                            &.date {
+                                width: auto;
+                                color: $subs-font;
+                            }
+                        }
+                    }
+                }
+            }  
+        }
+
+        //登入/帳密提示
+        &.clickWindow {
+            width: 420px;
+
+            .tabsContent {
+                width: 100%;
+                height: auto;
+                padding: 32px 82px;
+
+                p {
+                    color: $main-font;
+                    font-size: 16px;
+                    display: flex;
+                    justify-content: center;
+                }
+
+                button {
+                    width: 250px;
+                    height: 42px;
+                    @include mainBtn;
+                    margin-top: 30px;
+                }
+            }
+
+            &.rule {
+                width: 820px;
+
+                .ruleCnt {
+                    width: 100%;
+                    height: auto;
+                    padding: 24px 32px;
+
+                    .ruleBox {
+                        width: 100%;
+                        height: auto;
+                        max-height: 500px;
+                        overflow-y: auto;
+                        @include scrollBar;
+
+                        .title {
+                            @include innerTitleStyle;
+                            border: none;
+                            padding: 0;
+                        }
+
+                        p:not(.title) {
+                            color: $subs-font;
+                            font-size: 14px;
+                            font-weight: bold;
+                            line-height: 20px;
+                            margin-bottom: 10px;
+
+                            &:last-child {
+                                margin: 0;
+                            }
+                        }
+                    }
+
+                    button {
+                        width: 240px;
+                        height: 42px;
+                        @include mainBtn;
+                        display: block;
+                        margin: 24px auto 0;
+                    }
+                }
+            }
+        }
+
+        //忘記密碼
+        &.forgotPw {
+            width: 420px;
+
+            .tabsContent {
+                width: 100%;
+                height: auto;
+                padding: 27px 69px;
+
+                .inputBox {
+                    width: 280px;
+                    height: auto;
+                    margin-bottom: 15px;
+
+                    input {
+                        width: 280px;
+                        height: 42px;
+                        @include mainInput;
+                    }
+                }
+
+                .checkBtn {
+                    width: 100%;
+                    height: 42px;
+                    @include mainBtn;
+                }
+                
+                //紅字提醒訊息
+                .remind {
+                    color: $remind;
+                    font-size: 14px;
+                    margin-top: 30px;
+                }
+            
+             }
+            
+        }
+
+        //快速轉帳
+        &.quickTransfer {
+            width: 420px;
+
+            .tabsContent {
+                width: 100%;
+                height: auto;
+                padding: 27px 40px 0;
+
+                .Line {
+                    width: 100%;
+                    height: auto;
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 10px;
+
+                    .mainFont {
+                        width: 100px;
+                        color: $main-font;
+                        font-size: 16px;
+                        flex-shrink: 0;
+                    }
+
+                    .transPlatform {
+                        width: 100%;
+                        color: $title_1;
+                        font-size: 28px;
+                        font-weight: bolder;
+                    }
+
+                    .iconBox {
+                        width: 100%;
+                        height: auto;
+                        display: flex;
+                        justify-content: center;
+
+                        .transfer {
+                            width: 27px;
+                            height: 23px;
+                            transform: rotate(90deg);
+                        }
+                    }
+
+                    input {
+                        width: 100%;
+                        height: 42px;
+                        @include mainInput;
+                    }
+
+                    .btnBox {
+                        width: 100%;
+                        height: auto;
+    
+                        .moneyBtn {
+                            display: grid;
+                            grid-template-columns: repeat(3, 1fr);
+                            gap: 6px;
+                            margin-bottom: 12px;
+    
+                            .myBlock {
+                                @include secondBtn;
+                                width: auto;
+                                height: 30px;
+                                font-size: 15px;
+                                text-align: center;
+                            }
+                        }
+                    }
+                }
+             }
+             
+             .checkBtn {
+                width: 100%;
+                height: 42px;
+                @include mainBtn;
+            }
+
+            .bottom {
+                padding: 16px 69px;
+                border-top: 1px solid $main-Border_1;
+            }
+        }
+
+        //紅利會員彈窗
+        &.pointWindow {
+            width: 580px;
+            
+            .content {
+                width: 100%;
+                height: auto;
+                padding: 24px;
+
+                table {
+                    width: 100%;
+                    height: auto;
+                    @include bgStyle_3;
+
+                    tr {
+
+                        &:last-child {
+
+                            td {
+                                border-bottom: none;
+                            }
+                        }
+
+                        th {
+                            height: 36px;
+                            vertical-align: middle;
+                            border-bottom: solid 1px $main-Border_2;
+
+                            &:last-child {
+
+                                p {
+                                    border: none;
+                                }
+                            }
+                            
+                            p {
+                                width: 100%;
+                                height: 24px;
+                                border-right: solid 1px $main-Border_1;
+                                color: $main-font;
+                                font-size: 14px;
+                                font-weight: bold;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                @include textHidden;
+                            }
+                        }
+
+                        td {
+                            width: 50%;
+                            height: 36px;
+                            vertical-align: middle;
+                            border-bottom: solid 1px $main-Border_1;
+
+                            &:last-child {
+
+                                p {
+                                    border: none;
+                                }
+                            }
+                            
+                            p {
+                                width: 100%;
+                                height: 24px;
+                                border-right: solid 1px $main-Border_1;
+                                color: $subs-font;
+                                font-size: 14px;
+                                font-weight: bold;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                @include textHidden;
+                            }
+                        }
+                    }
+                }
+            }
+        } 
+        &.detail {
+            width: 650px;
+
+            .content {
+                width: 100%;
+                height: auto;
+                padding: 24px;
+
+                table {
+                    width: 100%;
+                    height: auto;
+                    @include bgStyle_3;
+
+                    tr {
+
+                        &:last-child {
+
+                            td {
+                                border-bottom: none;
+                            }
+                        }
+
+                        th {
+                            height: 36px;
+                            vertical-align: middle;
+                            border-bottom: solid 1px $main-Border_2;
+
+                            &:last-child {
+
+                                p {
+                                    border: none;
+                                }
+                            }
+                            
+                            p {
+                                width: 100%;
+                                height: 24px;
+                                border-right: solid 1px $main-Border_1;
+                                color: $main-font;
+                                font-size: 14px;
+                                font-weight: bold;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                @include textHidden;
+                            }
+                        }
+
+                        td {
+                            width: 30%;
+                            height: 36px;
+                            vertical-align: middle;
+                            border-bottom: solid 1px $main-Border_1;
+
+                            &:last-child {
+
+                                p {
+                                    border: none;
+                                }
+                            }
+                            
+                            p {
+                                width: 100%;
+                                height: 24px;
+                                border-right: solid 1px $main-Border_1;
+                                color: $subs-font;
+                                font-size: 14px;
+                                font-weight: bold;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                @include textHidden;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
+        //注單明細
+        &.waterWindow {
+            width: 840px;
+
+            .content {
+                width: 100%;
+                height: auto;
+                padding: 0 24px 24px;
+
+                .title {
+                    width: 100%;
+                    height: auto;
+                    padding: 10px 0;
+                    color: $light-font;
+                    font-size: 16px;
+                    letter-spacing: 2px;
+                }
+
+                table {
+                    width: 100%;
+                    height: auto;
+                    @include bgStyle_3;
+
+                    tr {
+
+                        &:last-child {
+                            
+                            td {
+                                border: none;
+                            }
+                        }
+
+                        th {
+                            height: 36px;
+                            vertical-align: middle;
+                            border-bottom: solid 1px $main-Border_2;
+
+                            &:last-child {
+
+                                p {
+                                    border: none;
+                                }
+                            }
+
+                            p {
+                                width: 100%;
+                                height: 24px;
+                                border-right: solid 1px $main-Border_1;
+                                color: $main-font;
+                                font-size: 14px;
+                                font-weight: bold;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                @include textHidden;
+                            }
+                        }
+
+                        td {
+                            width: 10%;
+                            height: 36px;
+                            vertical-align: middle;
+                            border-bottom: solid 1px $main-Border_1;
+
+                            &:last-child {
+
+                                p {
+                                    border: none;
+                                }
+                            }
+
+                            p {
+                                width: 100%;
+                                height: 24px;
+                                border-right: solid 1px $main-Border_1;
+                                color: $subs-font;
+                                font-size: 14px;
+                                font-weight: bold;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                @include textHidden;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        //回補明細
+        &.replenishmentWindow {
+            width: 840px;
+
+            .content {
+                width: 100%;
+                height: auto;
+                padding: 0 24px 24px;
+
+                .title {
+                    width: 100%;
+                    height: auto;
+                    padding: 10px 0;
+                    color: $light-font;
+                    font-size: 16px;
+                    letter-spacing: 2px;
+                }
+
+                table {
+                    width: 100%;
+                    height: auto;
+                    @include bgStyle_3;
+
+                    tr {
+
+                        &:last-child {
+                            
+                            td {
+                                border: none;
+                            }
+                        }
+
+                        th {
+                            height: 36px;
+                            vertical-align: middle;
+                            border-bottom: solid 1px $main-Border_2;
+
+                            &:last-child {
+
+                                p {
+                                    border: none;
+                                }
+                            }
+
+                            p {
+                                width: 100%;
+                                height: 24px;
+                                border-right: solid 1px $main-Border_1;
+                                color: $main-font;
+                                font-size: 14px;
+                                font-weight: bold;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                @include textHidden;
+                            }
+                        }
+
+                        td {
+                            width: 10%;
+                            height: 36px;
+                            vertical-align: middle;
+                            border-bottom: solid 1px $main-Border_1;
+
+                            &:last-child {
+
+                                p {
+                                    border: none;
+                                }
+                            }
+
+                            p {
+                                width: 100%;
+                                height: 24px;
+                                border-right: solid 1px $main-Border_1;
+                                color: $subs-font;
+                                font-size: 14px;
+                                font-weight: bold;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                @include textHidden;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        //更變密碼
+        &.passwordWindow {
+            width: 400px;
+
+            form {
+                width: 100%;
+                height: auto;
+                padding: 24px 48px;
+
+                .content {
+                    width: 100%;
+                    height: auto;
+                    
+                    ul {
+                        width: 100%;
+                        height: auto;
+
+                        li {
+                            width: 100%;
+                            height: auto;
+
+                            input {
+                                width: 100%;
+                                height: 42px;
+                                @include mainInput;
+                                margin-bottom: 16px;
+                            }
+
+                            button {
+                                width: 100%;
+                                height: 42px;
+                                @include mainBtn;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        //更變手機
+        &.phoneWindow {
+            width: 400px;
+
+            form {
+                width: 100%;
+                height: auto;
+                padding: 0 48px 24px;
+
+                .title {
+                    width: 100%;
+                    height: 50px;
+                    display: flex;
+                    align-items: center;
+                    color: $remind;
+                    font-size: 14px;
+                    font-weight: bold;
+                }
+
+                ul {
+                    width: 100%;
+                    height: auto;
+
+                    li {
+                        width: 100%;
+                        height: auto;
+                        position: relative;
+                        margin-bottom: 16px;
+
+                        input {
+                            width: 100%;
+                            height: 42px;
+                            @include mainInput;
+                        }
+
+                        button {
+                            position: absolute;
+                            top: 50%;
+                            right: 5px;
+                            transform: translateY(-50%);
+                            width: auto;
+                            height: 32px;
+                            @include secondBtn;
+                            padding: 0 15px;
+                        }
+                    }
+                }
+
+                .btnBox {
+                    width: 100%;
+                    height: auto;
+
+                    button {
+                        width: 100%;
+                        height: 42px;
+                        @include mainBtn;
+                    }
+
+                    .remind {
+                        width: 100%;
+                        color: $remind;
+                        font-size: 14px;
+                        font-weight: bold;
+                        text-align: center;
+                        margin-top: 16px;
+                    }
+                }
+            }
+        }
+
+        //任務詳情
+        &.checkEvent {
+            width: 640px;
+
+            .content {
+                width: 100%;
+                height: auto;
+                padding: 24px 32px;
+
+                &>div {
+                    width: 100%;
+                    height: auto;
+                    max-height: 400px;
+                    overflow-y: auto;
+                    @include scrollBar;
+
+                    img {
+                        width: 100%;
+                        object-fit: contain;
+                        margin-bottom: 20px;
+                    }
+    
+                    ul {
+                        width: 100%;
+                        height: auto;
+    
+                        li {
+                            width: 100%;
+                            height: auto;
+                            margin-bottom: 16px;
+    
+                            &:last-child {
+                                margin: 0;
+                            }
+    
+                            .title {
+                                color: $main-font;
+                                font-size: 14px;
+                                font-weight: bold;
+                                margin-bottom: 6px;
+    
+                                &.sp {
+                                    display: inline-block;
+                                    margin-right: 10px;
+                                }
+                            }
+    
+                            p:not(.title) {
+                                display: inline;
+                                color: $subs-font;
+                                font-size: 14px;
+                                font-weight: bold;
+                                line-height: 18px;
+                            }
+                        }
+                    }
+                }
+
+                button {
+                    width: 180px;
+                    height: 42px;
+                    @include mainBtn;
+                    display: block;
+                    margin: 24px auto 0;
+                }
+            }
+        }
+
+        //優惠申請視窗
+        &.applyWindow {
+            width: 400px;
+
+            .content {
+                width: 100%;
+                height: auto;
+                padding: 24px 32px;
+
+                p {
+                    color: $main-font;
+                    font-size: 16px;
+                    display: flex;
+                    justify-content: center;
+                }
+
+                button {
+                    width: 180px;
+                    height: 42px;
+                    @include mainBtn;
+                    display: block;
+                    margin: 24px auto 0;
+                }
+            }
+        }
+        //優惠申請視窗
+        &.numHint {
+            width: 400px;
+
+            .content {
+                width: 100%;
+                height: auto;
+                padding: 24px 32px;
+
+                p {
+                    color: $main-font;
+                    font-size: 16px;
+                    display: flex;
+                    justify-content: center;
+                }
+
+                button {
+                    width: 180px;
+                    height: 42px;
+                    @include mainBtn;
+                    display: block;
+                    margin: 24px auto 0;
+                }
+            }
+        }
+    }
+}

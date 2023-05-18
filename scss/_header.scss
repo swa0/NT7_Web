@@ -1,0 +1,374 @@
+ header {
+    width: 100%;
+    height: 100px;
+    background: $header_BG_1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 900;
+
+    //上部
+    .top {
+        width: 1200px;
+        height: 40px;
+        background: $header_BG_1;
+        position: relative;
+        display: flex;
+        justify-content: flex-end;
+        margin: 0 auto;
+
+         //logo
+        .logo{
+            position: absolute;
+            top: 0;
+            left: -20px;
+            z-index: 950;
+        }
+
+        //登入按鈕
+        .accountBox {
+            width: auto;
+            height: 100%;
+            display: flex;
+            align-items: center;
+
+            label {
+                width: 150px;
+                height: 27px;
+                position: relative;
+                display: flex;
+                align-items: center;
+                margin-right: 12px;
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    left: 10px;
+                    width: 12px;
+                    height: 14px;
+                }
+
+                input {
+                    width: 100%;
+                    height: 100%;
+                    @include mainInput;
+                    font-size: 14px;
+                    font-weight: bold;
+                    padding-left: 30px;
+                
+                    &::placeholder {
+                        color: $subs-font;
+                    }
+                }
+
+                i {
+                    position: absolute;
+                    right: 10px;
+                    width: 14px;
+                    height: 14px;
+                    cursor: pointer;
+                }
+            }
+
+            //會員資訊列
+            .member {
+                width: auto;
+                height: 100%;
+                display: flex;
+                align-items: center;
+
+                p {
+                    font-size: 14px;
+                    margin-right: 13px;
+
+                    &.level{
+                        color: $main-font;
+                    }
+                    &.memberId{
+                        color: $header_accWord;
+                    }
+                }
+            }
+
+            //滑入錢包
+            .moneyBox {
+                width: auto;
+                height: 100%;
+                display:flex;
+                align-items: center;
+                margin-right: 5px;
+                position: relative;
+                overflow: hidden;
+                z-index: 999;
+
+                &.active {
+                    overflow: visible;
+                }
+
+                .moneyBtn {
+                    background: $header_Money_BG;
+                    border-radius: 5px;
+                    color: $main-font;
+                    padding:7px 10px;
+                    display: flex;
+                    align-items: center;
+                    cursor: pointer;
+                    user-select: none;
+
+                    .arrow_ic {
+                        // border-top: 5px solid $main-font;
+                        // border-right: 5px solid transparent;
+                        // border-left: 5px solid transparent;
+                        // border-bottom: 5px solid transparent;
+                        // display: flex;
+                        // align-items: center;
+                        width: 0;
+                        height: 0;
+                        border-style: solid;
+                        border-width: 6px 4px 0 4px;
+                        border-color: $main-font transparent;
+                        margin-left: 8px;
+                    }
+                }
+
+                .moneyList {
+                    width: 290px;
+                    height: auto;
+                    background: $header_Money_innerBG;
+                    position: absolute;
+                    top: 40px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    border: solid 1px $header_Money_Border;
+                    border-top: none;
+
+                    li {
+                        width: 100%;
+                        height: 45px;
+                        border-bottom: solid 1px $header_Money_innerBorder;
+                        color: $main-font;
+                        font-size: 14px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        padding: 0 16px;
+
+                        &:last-child {
+                            border: none;
+                        }
+
+                        .num {
+                            color: $header_Money_moneyWord;
+                            font-size: 14px;
+                            font-weight: bold;
+                        }
+                    }
+                }
+            }
+
+            .btnLine{
+                width: auto;
+                height: 100%;
+                display: flex;
+                align-items: center;
+
+                button {
+                    margin-right: 5px;
+                    padding: 0 10px;
+
+                    &:last-child {
+                        margin: 0;
+                    }
+                }
+            }
+
+            button {
+                width: auto;
+                height: 27px;
+                @include headerBtn_1;
+
+                &.signup {
+                    @include headerBtn_2;
+                    margin-left: 12px;
+                }
+
+                &.memberCenter,
+                &.message {
+                    @include headerBtn_2;
+                    display: flex;
+                    align-items: center;
+
+                    .member_ic {
+                        width: 12px;
+                        height: 14px;
+                        margin-right: 5px;
+                    }
+
+                    .mail_ic {
+                        width: 14px;
+                        height: 11px;
+                        margin-right: 5px;
+                    }
+                }
+
+                &.message {
+                    position: relative;
+                }
+
+                &.logout {
+                    @include headerBtn_3;
+                }
+            }
+            .messageAlarm{
+                position: absolute;
+                top: -3px;
+                left: 2px;
+                @include mailRemind;
+            }
+        }
+    }
+
+    //導航列
+    .nav {
+        width: 100%;
+        height: 60px;
+        background: $header_BG_2;
+        position: relative;
+
+        &>ul {
+            width: 1200px;
+            height: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: flex-end;
+
+            li {
+                width: auto;
+                height: 100%;
+                display: flex;
+                align-items: center;
+
+                &:hover,&:active {
+                    
+                    a {
+                        background: $header_Nav_ActiveBG;
+                    }
+
+                    //下拉式選單
+                    .dropdown {
+                        height: 250px;
+                        border-bottom: 1px solid $header_dropdown_border;
+                    }
+                }
+
+                &.active {
+
+                    a {
+                        background: $header_Nav_ActiveBG;
+                    }
+                }
+
+                .dropdown {
+                    width: 100%;
+                    height: 0;
+                    position: absolute;
+                    top: 60px;
+                    left: 0;
+                    overflow: hidden;
+                    background: $header_dropdownBG;
+                    // transition: 0.3s all;
+
+                    ol {
+                        width: 1200px;
+                        height: 100%;
+                        margin: 0 auto;
+                        background: $header_dropdownBG;
+                        display: flex;
+                        align-items: center;
+
+                        .platformBox {
+                            width: auto;
+                            height: auto;
+                            flex-direction: column;
+                            margin-right: 27px;
+                            position: relative;
+                            cursor: pointer;
+
+                            :last-child {
+                                margin-right: 0;
+                            }
+                            &::before {
+                                content: "";
+                                position: absolute;
+                                width: 143px;
+                                height: 10px;       
+                                left: 0;
+                                top: 0;
+                                width: 100%;
+                                height: 100%;
+                            }
+                            
+                            ::after {
+                                content: url("../images/icon/hover.png");
+                                position: absolute;
+                                width: 143px;
+                                height: 10px;
+                                left: 0;
+                                top: 97.5%;
+                                width: 100%;
+                                height: 100%;
+                                opacity: 0;
+                            }
+  
+                            p {
+                                width: 100%;
+                                margin-top: 18px;
+                                font-size: 14px;
+                                color: $header_dropdown_font;
+                                text-align: center;
+                                margin-bottom: 16px;
+                            }
+
+                            &:hover,&:active,&.active{
+                                img {
+                                    transform: scale(1.1);
+                                    transition: 0.6s all;
+                                }
+                                ::after {
+                                    opacity: 1;
+                                }
+                            }
+                        }
+                        .disabled {
+                            cursor:auto;
+                            
+                            &:hover,&:active,&.active{
+                                
+                                img {
+                                    transform: none;
+                                }
+                            }
+                            ::after {
+                                content:" ";
+                            }
+                        }
+                        
+                    }
+                }
+
+                a {
+                    width: 100%;
+                    height: 100%;
+                    color: $header_Nav_Word;
+                    font-size: 18px;
+                    display: flex;
+                    align-items: center;
+                    text-decoration: none;
+                    padding: 0 26px;
+                }
+            }
+        }
+
+       
+    }
+}

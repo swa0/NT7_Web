@@ -1,0 +1,150 @@
+.registerWrap {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .bigBox {
+        width: 862px;
+        height: auto;
+        @include registerBG;
+
+        .leftWrap {
+            width: 50%;
+            height: 664px;
+
+            .img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        form {
+            width: 50%;
+            height: auto;
+            padding: 0 40px;
+
+            .title {
+                width: 100%;
+                height: 100px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: $dark-font;
+                font-size: 24px;
+                font-weight: bold;
+
+                i {
+                    width: 40px;
+                    height: 40px;
+                    margin-right: 10px;
+                }
+            }
+
+            label {
+                display: block;
+                width: 100%;
+                height: auto;
+                position: relative;
+                margin-bottom: 24px;
+
+                &:last-child {
+                    margin: 0;
+                }
+
+                input {
+                    width: 100%;
+                    height: 42px;
+                    @include mainInput;
+                }
+
+                .remind {
+                    width: auto;
+                    color: $remind;
+                    font-size: 12px;
+                    font-weight: bold;
+                    position: absolute;
+                    left: 0;
+                    bottom: -15px;
+                }
+                .remindR {
+                    width: auto;
+                    color: $remind;
+                    font-size: 12px;
+                    font-weight: bold;
+                    position: absolute;
+                    right: 0;
+                    bottom: -15px;
+                }
+
+                .eye_ic {
+                    position: absolute;
+                    display: block;
+                    width: 25px;
+                    height: 17px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    right: 10px;
+                }
+                
+                .codeBtn {
+                    width: auto;
+                    height: 32px;
+                    @include secondBtn;
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    right: 5px;
+                    font-size: 12px;
+                    padding: 0 15px;
+                }
+            }
+
+            .ruleBox {
+                width: 100%;
+                height: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 20px;
+
+                input {
+                    width: 16px;
+                    height: 16px;
+                    margin-right: 10px;
+                }
+
+                p {
+                    color: $dark-font;
+                    font-size: 16px;
+                    font-weight: bold;
+
+                    span {
+                        color: $remind;
+                        text-decoration: underline;
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            button {
+                width: 100%;
+                height: 42px;
+                margin-bottom: 10px;
+                @include secondBtn;
+
+                &:hover,&:active,&.active {
+                    border-color: $dark-font;
+                }
+
+                &:last-child {
+                    margin: 0;
+                }
+            }
+        }
+    }
+}

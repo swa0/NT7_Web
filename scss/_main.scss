@@ -1,0 +1,41 @@
+html {
+
+    body {
+        min-width: 1200px;
+        position: relative;
+
+        @import "./header";
+        @import "./ad";
+        @import "./home";
+        @import "./footer";
+        @import "./jumpWindow";
+        @import "./eventPage";
+        @import "./mainGamePage";
+        @import "./help";
+        @import "./layout";
+        @import "./wallet";
+        @import "./dealRecord";
+        @import "./bettingRecord";
+        @import "./card";
+        @import "./member";
+        @import "./deposit";
+        @import "./transfer";
+        @import "./withdrawal";
+        @import "./invite";
+        @import "./vip";
+        @import "./point";
+        @import "./eventApply";
+        @import "./mail";
+        @import "./register";
+        @import "./asideBtn";
+
+        .bg {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -999;
+        }
+    }
+}
